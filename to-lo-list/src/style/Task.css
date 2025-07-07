@@ -1,0 +1,11 @@
+.task {
+    background-color: yellow;
+    border: 5px solid black;
+    width: 40vw;
+    
+    
+}
+
+.task p {
+    font-size: 20px;
+}

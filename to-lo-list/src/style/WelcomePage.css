@@ -1,0 +1,43 @@
+* {
+    font-family: "Pixelify Sans", sans-serif;
+}
+
+.main-content-welcome {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.p-welcome {
+    font-size: 40px;
+}
+
+.input-name {
+    margin-top: 50px;
+    border: none;
+    padding: 20px;
+    width: 20vw;
+    line-height: 50px;
+    font-size: 30px;
+    font-family: "Pixelify Sans", sans-serif;
+    text-align: center;
+}
+
+
+
+.input-name:focus {
+    outline: none;
+}
+
+.button-start {
+    margin-top: 50px;
+    font-size: 30px;
+    padding: 10px 20px;
+}
+
+.button-start:hover {
+    cursor: pointer;
+}
