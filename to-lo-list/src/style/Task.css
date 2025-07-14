@@ -1,9 +1,8 @@
 .task {
     background-color: yellow;
     border: 5px solid black;
-    width: 40vw;
-    
-    
+    width: 60rem;
+    /*margin-bottom: 2vh;*/
 }
 
 .task p {
