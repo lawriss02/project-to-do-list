@@ -24,7 +24,12 @@ export function WelcomePage () {
     return (
         <div className="main-content-welcome" style={{backgroundColor: data.style.background_color}}>
             <p className="p-welcome">Hi there! What is your name?</p>
-            <input className="input-name" type="text" ref={inputNameRef} />
+            <input className="input-name" type="text" ref={inputNameRef} onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                e.preventDefault(); // evita que se envíe un formulario si hay uno
+                validateName();       // llama a la función de guardar
+                }
+            }}/>
             <button className="button-start" onClick={validateName}> Start </button>
         </div>
     )

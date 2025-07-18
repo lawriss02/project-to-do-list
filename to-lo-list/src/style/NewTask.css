@@ -1,0 +1,80 @@
+
+.popup-new-task {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  /*padding: 2rem;*/
+  border-radius: 8px;
+  width: 70%;
+  height: 50%;
+  border: solid black 0.5rem;
+}
+
+.task-top-attributes {
+    background-color: brown;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+select {
+    font-size: max(.8rem, 1vw);
+    border-radius: 10px;
+    padding: .2rem .5rem;
+}
+
+.task-title {
+    font-size: max(1.2rem, 2vw);
+    padding: 1rem 1rem;
+    font-weight: 600;
+    border: none;
+    display: block;
+    width: 100%;
+}
+
+.task-title:focus {
+    outline: none;
+}
+
+.task-description {
+    font-size: max(.8rem, 1vw);
+    padding: 0 1rem;
+    font-style: italic;
+    border: none;
+    width: 100%;
+    resize: none;  
+    margin-right: 1rem;
+}
+
+.task-description:focus {
+    outline: none;
+}
+
+.task-description::placeholder {
+    
+}
+
+.bottom-buttons {
+    display: flex;
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 2rem;
+}
+
+.task-delete {
+    
+    font-size: max(.8rem, 1.2vw);
+    padding: 0 1.5rem;
+}
+
+.task-ok {
+    
+    font-size: max(.8rem, 1.2vw);
+    padding: 0 1.5rem;
+}

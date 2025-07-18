@@ -13,8 +13,9 @@ createRoot(document.getElementById('root')).render(
     <UserContext>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<WelcomePage />} />
-          <Route path="/list" element={<ListPage />} />
+          <Route path="/" element={<WelcomePage/>} />
+          <Route path="/list" element={<ListPage/>} />
+
         </Routes>
       </BrowserRouter>
     </UserContext>

@@ -1,5 +1,9 @@
 {
     "style": {
         "background_color": "#BCB4FF"
+    },
+    "task_labels": {
+        "Priority": ["High", "Medium", "Low"],
+        "Pending": ["Completed", "In progress", "Pending"]
     }
 }
