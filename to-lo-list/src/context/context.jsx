@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-
+import data from "../configs/configuration_file.json";
 
 const userContext = createContext();
 
@@ -10,12 +10,14 @@ export const useUserContext = () => {
 export const UserContext = ({ children }) => {
     // poner cursor timeline
     const [username, setUsername] = useState(null);
-
+    const [taskCategory, setTaskCategory] = useState(data.task_labels.Category);
     
 
     const context = {
         username,
-        setUsername
+        setUsername,
+        taskCategory,
+        setTaskCategory
     };
 
     return (

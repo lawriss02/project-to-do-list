@@ -4,6 +4,7 @@
     },
     "task_labels": {
         "Priority": ["High", "Medium", "Low"],
+        "Category": ["Sport", "Fun", "Study"],
         "Pending": ["Completed", "In progress", "Pending"]
     }
 }

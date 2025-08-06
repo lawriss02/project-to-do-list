@@ -4,7 +4,6 @@ import '../style/index.css'
 import {WelcomePage} from '../pages/WelcomePage.jsx'
 import {UserContext} from "../context/context.jsx"
 import {ListPage} from '../pages/ListPage.jsx'
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
