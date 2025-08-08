@@ -13,10 +13,15 @@ export function ListPage() {
     const navigate = useNavigate();
     const [showTask, setShowTask] = useState(false);
     const [showDeletePopup, setShowDeletePopup] = useState(false);
+    const [taskToEdit, setTaskToEdit] = useState(null);
 
-    useEffect(() => { 
-        console.log(showDeletePopup);
-    }, [showDeletePopup]);
+    const handleOpenTask = (task) => {
+        setTaskToEdit(task);
+        setShowTask(true);
+    };
+    /*useEffect(() => { 
+        //console.log(showDeletePopup);
+    }, [showDeletePopup]);*/
 
     return(
         <div className="main-content-list" style={{backgroundColor: data.style.background_color}}>
@@ -26,10 +31,12 @@ export function ListPage() {
             </div>
             <p className="title-to-do">{context.username}'s TO DOs</p>
             <div className="task-list-container">
-                <Task/> <Task/> <Task/> <Task/> <Task/> <Task/> <Task/> <Task/> <Task/> 
+                {context.tasks.map((userTask, index) => (
+                    <Task key={userTask.id} task={userTask} onClick={() => handleOpenTask(userTask)}/>
+                ))}
             </div>
-            <button className="btn-new-task" onClick={() => setShowTask(true)}>+ New task</button>
-            {showTask && <NewTask onSave={() => setShowTask(false)} onDelete={() => setShowDeletePopup(true)}/>}
+            <button className="btn-new-task" onClick={() => { setTaskToEdit(null); setShowTask(true); }}>+ New task</button>
+            {showTask && <NewTask taskData={taskToEdit} onSave={() => setShowTask(false)} onDelete={() => setShowDeletePopup(true)}/>}
 
 
         </div>
