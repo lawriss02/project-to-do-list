@@ -9,3 +9,7 @@
 .task p {
     font-size: 20px;
 }
+
+.task:hover {
+    cursor: pointer;
+}

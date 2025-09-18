@@ -14,19 +14,31 @@ export function ListPage() {
     const [showTask, setShowTask] = useState(false);
     const [showDeletePopup, setShowDeletePopup] = useState(false);
     const [taskToEdit, setTaskToEdit] = useState(null);
+    const [completedTasks, setCompletedTasks] = useState(0);
+    const [totalTasks, setTotalTasks] = useState(0);
 
     const handleOpenTask = (task) => {
         setTaskToEdit(task);
         setShowTask(true);
     };
-    /*useEffect(() => { 
-        //console.log(showDeletePopup);
-    }, [showDeletePopup]);*/
+
+    useEffect(() => { 
+        console.log('TASKS: ', context.tasks);
+        setTotalTasks(context.tasks.length);
+        let count = 0;
+        for (let i=0; i<context.tasks.length; i++) {
+            if (context.tasks[i].selectedPending.status === "completed") {
+                count += 1;
+            }
+        }
+        setCompletedTasks(count);
+
+    }, [context.tasks]);
 
     return(
         <div className="main-content-list" style={{backgroundColor: data.style.background_color}}>
             <div className="top-bar">
-                <button>Pending tasks: 10/10</button>
+                <button>Completed tasks: {completedTasks}/{totalTasks}</button>
                 <button>Manage tags</button>
             </div>
             <p className="title-to-do">{context.username}'s TO DOs</p>
@@ -37,7 +49,7 @@ export function ListPage() {
             </div>
             <button className="btn-new-task" onClick={() => { setTaskToEdit(null); setShowTask(true); }}>+ New task</button>
             {showTask && <NewTask taskData={taskToEdit} onSave={() => setShowTask(false)} onDelete={() => setShowDeletePopup(true)}/>}
-
+            {showDeletePopup && <DeleteTask taskData={taskToEdit} onCancel={() => setShowDeletePopup(false)} onDelete={() => {setShowDeletePopup(false); setShowTask(false)}}/>}
 
         </div>
     )

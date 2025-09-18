@@ -9,6 +9,28 @@
     pointer-events: auto;      /* puede capturar clics si quieres bloquear interacción */
 }
 
-.popup-deelte {
-    width: 50rem;
+.popup-delete {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    /*padding: 2rem;*/
+    border-radius: 8px;
+    width: 60%;
+    height: 20%;
+    border: solid black 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+/*
+.popup-delete p {
+    font-size: max(.8rem, 1vw);
+    padding: 0 1rem;
+    border: none;
+    width: 100%;
+    resize: none;  
+    margin-right: 1rem;
+}*/

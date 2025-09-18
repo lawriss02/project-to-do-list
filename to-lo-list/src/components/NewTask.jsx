@@ -20,9 +20,9 @@ export function NewTask({ onSave, onDelete, taskData }) {
     const [description, setDescription] = useState(taskData?.description || "");
     
     const pendingBarStyle = {
-        completed: {color: "green", height: "0%"},
-        inprogress: {color: "yellow", height: "45%"},
-        pending: {color: "red", height: "80%"},
+        completed: {status: "completed", color: "green", height: "0%"},
+        inprogress: {status: "inprogress", color: "yellow", height: "45%"},
+        pending: {status: "pending", color: "red", height: "80%"},
     }
 
     const handlePriorityChange = (e) => {
@@ -34,14 +34,16 @@ export function NewTask({ onSave, onDelete, taskData }) {
     };
 
     const handlePendingChange = (e) => {
+        console.log('PENDING CHANGE: ', e.target.value);
+        setSelectedPending(e.target.value);
+        /*
         if (e.target.value == data.task_labels.Pending[0]) {
-            setSelectedPending(pendingBarStyle.completed);
+            //setSelectedPending(pendingBarStyle.completed);
         } else if (e.target.value == data.task_labels.Pending[1]) {
-            setSelectedPending(pendingBarStyle.inprogress);
+            //setSelectedPending(pendingBarStyle.inprogress);
         } else if (e.target.value == data.task_labels.Pending[2]) {
-            setSelectedPending(pendingBarStyle.pending);
-
-        }
+            //setSelectedPending(pendingBarStyle.pending);
+        }*/
     }
 
 
@@ -87,9 +89,9 @@ export function NewTask({ onSave, onDelete, taskData }) {
                         </select>
                         <select id="pending-selector" name="pending" required defaultValue="" onChange={handlePendingChange} value={selectedPending}>
                             <option value="" disabled>{Object.keys(data.task_labels)[2]}</option>
-                            <option value={data.task_labels.Pending[0]}>{data.task_labels.Pending[0]}</option>
-                            <option value={data.task_labels.Pending[1]}>{data.task_labels.Pending[1]}</option>
-                            <option value={data.task_labels.Pending[2]}>{data.task_labels.Pending[2]}</option>
+                            <option value={pendingBarStyle.completed}>{data.task_labels.Pending[0]}</option>
+                            <option value={pendingBarStyle.inprogress}>{data.task_labels.Pending[1]}</option>
+                            <option value={pendingBarStyle.pending}>{data.task_labels.Pending[2]}</option>
                         </select>
                         
                     </div>
@@ -113,7 +115,7 @@ export function NewTask({ onSave, onDelete, taskData }) {
                     
                     
                     <div className="bottom-buttons">
-                        <button className="task-delete" onClick={onDelete}>Delete</button>
+                        <button className="task-delete" onClick={() => {onDelete(); }}>Delete</button>
                         <button className="task-ok" onClick={() => {onSave(); handleAddOrUpdateTask();}}>Save</button>
                     </div>
                 </div>

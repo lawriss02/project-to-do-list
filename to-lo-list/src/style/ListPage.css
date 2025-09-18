@@ -72,6 +72,10 @@
     font-size: max(1rem, 1.5vw)
 }
 
+.btn-new-task:hover {
+    cursor: pointer;
+}
+
 .overlay {
     position: fixed;           /* lo saca del flujo normal y lo fija en pantalla */
     top: 0;
