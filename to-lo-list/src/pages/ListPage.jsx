@@ -6,6 +6,7 @@ import {Task} from "../components/Task"
 import { NewTask } from "../components/NewTask";
 import { useNavigate } from "react-router-dom";
 import { DeleteTask } from "../components/DeleteTask";
+import { ResetTasks } from "../components/ResetTasks";
 
 
 export function ListPage() {
@@ -13,6 +14,7 @@ export function ListPage() {
     const navigate = useNavigate();
     const [showTask, setShowTask] = useState(false);
     const [showDeletePopup, setShowDeletePopup] = useState(false);
+    const [showResetPopup, setShowResetPopup] = useState(false);
     const [taskToEdit, setTaskToEdit] = useState(null);
     const [completedTasks, setCompletedTasks] = useState(0);
     const [totalTasks, setTotalTasks] = useState(0);
@@ -23,7 +25,7 @@ export function ListPage() {
     };
 
     useEffect(() => { 
-        console.log('TASKS: ', context.tasks);
+        //console.log('TASKS: ', context.tasks);
         setTotalTasks(context.tasks.length);
         let count = 0;
         for (let i=0; i<context.tasks.length; i++) {
@@ -39,18 +41,23 @@ export function ListPage() {
         <div className="main-content-list" style={{backgroundColor: data.style.background_color}}>
             <div className="top-bar">
                 <button>Completed tasks: {completedTasks}/{totalTasks}</button>
+                <button className="btn-reset" onClick={() => {setShowResetPopup(true)}}>Reset</button>
+                {showResetPopup && <ResetTasks onCancel={() => setShowResetPopup(false)}/>}
                 <button>Manage tags</button>
             </div>
-            <p className="title-to-do">{context.username}'s TO DOs</p>
-            <div className="task-list-container">
-                {context.tasks.map((userTask, index) => (
-                    <Task key={userTask.id} task={userTask} onClick={() => handleOpenTask(userTask)}/>
-                ))}
+            <div className="container-title-list">
+                <p className="title-to-do">{context.username}'s TO DOs</p>
+                <div className="task-list-container">
+                    {context.tasks.map((userTask, index) => (
+                        <Task key={userTask.id} task={userTask} onClick={() => handleOpenTask(userTask)}/>
+                    ))}
+                </div>
             </div>
+            
             <button className="btn-new-task" onClick={() => { setTaskToEdit(null); setShowTask(true); }}>+ New task</button>
             {showTask && <NewTask taskData={taskToEdit} onSave={() => setShowTask(false)} onDelete={() => setShowDeletePopup(true)}/>}
             {showDeletePopup && <DeleteTask taskData={taskToEdit} onCancel={() => setShowDeletePopup(false)} onDelete={() => {setShowDeletePopup(false); setShowTask(false)}}/>}
-
+                
         </div>
     )
 }

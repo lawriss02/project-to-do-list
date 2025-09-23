@@ -24,13 +24,17 @@
     font-size: 1.5rem;
     font-family: "Pixelify Sans", sans-serif;
     text-align: center;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.658);
 }
 
-
-
-.input-name:focus {
+.input-name:hover, .input-name:focus {
+    background-color: rgba(255, 255, 255, 0.842);
     outline: none;
+
 }
+
+
 
 .button-start {
     margin-top: 50px;

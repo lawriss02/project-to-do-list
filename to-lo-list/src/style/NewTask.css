@@ -125,3 +125,11 @@ select {
     display: flex;
     justify-content: center;
 }
+
+.task-top-attributes img {
+    height: 30px;
+}
+
+.task-top-attributes img:hover {
+    cursor: pointer;
+}

@@ -1,15 +1,42 @@
 .task {
-    background-color: yellow;
-    border: 5px solid black;
+    padding: .5rem;
+    background-color: #c9f29088;
     width: 60rem;
     /*margin-bottom: 2vh;*/
     height: 10rem;
+    border-radius: 10px;
+    box-shadow: 5px 5px black;
+    transition: box-shadow 0.2s ease;
+
+    display: flex;
+    align-items: center; /**/
+    justify-content: space-between;
 }
 
 .task p {
-    font-size: 20px;
+    font-weight: 500;
+    font-size: max(1rem, 1vw);
 }
 
 .task:hover {
     cursor: pointer;
+    box-shadow: 10px 10px black;
+    background-color: #C9F290;
+
+}
+
+/*.task-content-left {
+    width: 80%;
+}*/
+
+.task-icon-priority {
+    width: 3rem;
+    height: auto;
+    object-fit: contain;
+}
+
+.task-bar {
+    height: 100%;
+    margin: 1rem 0;
+    align-items: center;
 }

@@ -15,7 +15,7 @@ export function NewTask({ onSave, onDelete, taskData }) {
 
     const [selectedPriority, setSelectedPriority] = useState(taskData?.selectedPriority || priorityImages.low);
     const [selectedCategory, setSelectedCategory] = useState(taskData?.selectedCategory || "");
-    const [selectedPending, setSelectedPending] = useState(taskData?.selectedPending || "");
+    const [selectedPending, setSelectedPending] = useState(taskData?.selectedPending || { status: ""});
     const [title, setTitle] = useState(taskData?.title || "");
     const [description, setDescription] = useState(taskData?.description || "");
     
@@ -34,16 +34,7 @@ export function NewTask({ onSave, onDelete, taskData }) {
     };
 
     const handlePendingChange = (e) => {
-        console.log('PENDING CHANGE: ', e.target.value);
-        setSelectedPending(e.target.value);
-        /*
-        if (e.target.value == data.task_labels.Pending[0]) {
-            //setSelectedPending(pendingBarStyle.completed);
-        } else if (e.target.value == data.task_labels.Pending[1]) {
-            //setSelectedPending(pendingBarStyle.inprogress);
-        } else if (e.target.value == data.task_labels.Pending[2]) {
-            //setSelectedPending(pendingBarStyle.pending);
-        }*/
+        setSelectedPending(pendingBarStyle[e.target.value]);
     }
 
 
@@ -73,13 +64,13 @@ export function NewTask({ onSave, onDelete, taskData }) {
         <div className="overlay">
                 <div className="popup-new-task">
                     <div className="task-top-attributes">
-                        <select id="priority-selector" name="priority" required defaultValue="" onChange={handlePriorityChange} value={selectedPriority}>
+                        <select id="priority-selector" required onChange={handlePriorityChange} value={selectedPriority}>
                             <option value="" disabled >{Object.keys(data.task_labels)[0]}</option>
                             <option value={priorityImages.high}>{data.task_labels.Priority[0]}</option>
                             <option value={priorityImages.mid}>{data.task_labels.Priority[1]}</option>
                             <option value={priorityImages.low}>{data.task_labels.Priority[2]}</option>
                         </select>
-                        <select id="category-selector" name="category" required defaultValue="" onChange={handleCategoryChange} value={selectedCategory}>
+                        <select id="category-selector" required onChange={handleCategoryChange} value={selectedCategory}>
                             <option value="" disabled>{Object.keys(data.task_labels)[1]}</option>
                             {context.taskCategory.map((category, index) => (
                                 <option key={index} value={category}>
@@ -87,13 +78,13 @@ export function NewTask({ onSave, onDelete, taskData }) {
                                 </option>
                             ))}
                         </select>
-                        <select id="pending-selector" name="pending" required defaultValue="" onChange={handlePendingChange} value={selectedPending}>
+                        <select id="pending-selector" required onChange={handlePendingChange} value={selectedPending.status}>
                             <option value="" disabled>{Object.keys(data.task_labels)[2]}</option>
-                            <option value={pendingBarStyle.completed}>{data.task_labels.Pending[0]}</option>
-                            <option value={pendingBarStyle.inprogress}>{data.task_labels.Pending[1]}</option>
-                            <option value={pendingBarStyle.pending}>{data.task_labels.Pending[2]}</option>
+                            <option value={pendingBarStyle.completed.status}>{data.task_labels.Pending[0]}</option>
+                            <option value={pendingBarStyle.inprogress.status}>{data.task_labels.Pending[1]}</option>
+                            <option value={pendingBarStyle.pending.status}>{data.task_labels.Pending[2]}</option>
                         </select>
-                        
+                        <img src="../public/close-icon.jpg" alt="" onClick={() => onSave()}/>
                     </div>
                     <div className="task-parameters-icons">
                         <img src={selectedPriority} alt="" />
