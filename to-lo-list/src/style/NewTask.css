@@ -39,8 +39,10 @@ select {
 
 .task-parameters-icons label {
     font-size: max(.8rem, 1vw);
-    border: 2px solid black;
+    border: .1rem solid black;
     padding: 0.2rem 1rem;
+    border-radius: 10rem;
+    box-shadow: .2rem .2rem black;
 }
 
 .task-title {
