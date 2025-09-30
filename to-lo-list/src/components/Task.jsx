@@ -9,7 +9,7 @@ export function Task({task, onClick }) {
     }, []); */
 
     return (
-        <div className="task" onClick={onClick}>
+        <div className={`task color-${task.selectedPending.color}`} onClick={onClick}>
             <div className="task-content-left">
                 <div className="task-parameters-icons-t">
                     <img className="task-icon-priority" src={task.selectedPriority} alt=""/>

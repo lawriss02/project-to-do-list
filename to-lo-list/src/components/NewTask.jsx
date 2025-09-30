@@ -8,9 +8,9 @@ export function NewTask({ onSave, onDelete, taskData }) {
     const context = useUserContext();
 
     const priorityImages = {
-        low: "../public/priority-low.png",
-        mid: "/public/priority-mid.png",
-        high: "/public/priority-high.png"
+        low: "../public/priority-low1.png",
+        mid: "/public/priority-mid1.png",
+        high: "/public/priority-high1.png"
     };
 
     const [selectedPriority, setSelectedPriority] = useState(taskData?.selectedPriority || priorityImages.low);
@@ -62,6 +62,8 @@ export function NewTask({ onSave, onDelete, taskData }) {
 
     return (
         <div className="overlay">
+                <img className="close-img" src="../public/close2.png" alt="" onClick={() => onSave()}/>
+
                 <div className="popup-new-task">
                     <div className="task-top-attributes">
                         <select id="priority-selector" required onChange={handlePriorityChange} value={selectedPriority}>
@@ -84,7 +86,6 @@ export function NewTask({ onSave, onDelete, taskData }) {
                             <option value={pendingBarStyle.inprogress.status}>{data.task_labels.Pending[1]}</option>
                             <option value={pendingBarStyle.pending.status}>{data.task_labels.Pending[2]}</option>
                         </select>
-                        <img src="../public/close-icon.jpg" alt="" onClick={() => onSave()}/>
                     </div>
                     <div className="task-parameters-icons">
                         <img src={selectedPriority} alt="" />

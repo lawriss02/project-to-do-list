@@ -1,6 +1,6 @@
 .task {
     padding: 1rem;
-    background-color: #c9f29088;
+    background-color: #f2db909f;
     width: 60rem;
     max-width: 60rem;
     /*margin-bottom: 2vh;*/
@@ -12,7 +12,35 @@
     display: flex;
     /*align-items: center;*/
     justify-content: space-between;
+
+    transition: transform 0.1s ease; 
+
 }
+
+.task.color-red {
+    background-color: #f2909098;
+}
+
+.task.color-red:hover {
+    background-color: #f79b9b;
+}
+
+.task.color-yellow {
+    background-color: #f2db909f;
+}
+
+.task.color-yellow:hover {
+    background-color: #f2eb90;
+}
+
+.task.color-green {
+    background-color: #c9f29088;
+}
+
+.task.color-green:hover {
+    background-color: #C9F290;
+}
+
 
 .task p {
     font-weight: 500;
@@ -22,8 +50,8 @@
 .task:hover {
     cursor: pointer;
     box-shadow: 10px 10px black;
-    background-color: #C9F290;
-
+    background-color: #f2eb90;
+    transform: scale(1.02); 
 }
 
 .task-icon-priority {

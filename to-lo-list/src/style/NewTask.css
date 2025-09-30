@@ -9,22 +9,31 @@
   border-radius: 8px;
   width: 70%;
   height: 50%;
-  border: solid black 0.5rem;
+  border: solid black 0.3rem;
+  box-shadow: .5rem .5rem black;
+  border-radius: 2rem;
+  overflow: hidden;
 }
 
 .task-top-attributes {
-    background-color: brown;
+    background-color: rgb(58, 62, 109);
     padding: 1rem;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
     gap: 1rem;
+    align-items: center;
+    /*margin: .5rem;*/
 }
 
 select {
     font-size: max(.8rem, 1vw);
     border-radius: 10px;
     padding: .2rem .5rem;
+}
+
+select:hover {
+    cursor: pointer;
 }
 
 .task-parameters-icons {
@@ -72,10 +81,6 @@ select {
     outline: none;
 }
 
-.task-description::placeholder {
-    
-}
-
 .bottom-buttons {
     display: flex;
     position: absolute;
@@ -85,17 +90,18 @@ select {
     gap: 2rem;
 }
 
-.task-delete {
-    
+.task-delete, .task-ok {
     font-size: max(.8rem, 1.2vw);
     padding: 0 1.5rem;
+    background-color: rgba(58, 62, 109, 0.171);
+    margin-bottom: 1rem;
+    /*transition: transform 0.1s ease;*/
 }
 
-.task-ok {
-    
-    font-size: max(.8rem, 1.2vw);
-    padding: 0 1.5rem;
-}
+.task-delete:hover, .task-ok:hover {
+    background-color: rgba(137, 141, 182, 0.74);
+    /*transform: scale(1.1); */
+} 
 
 .task-content {
     width: 95%;
@@ -128,10 +134,16 @@ select {
     justify-content: center;
 }
 
-.task-top-attributes img {
-    height: 30px;
+.close-img {
+    height: 3.5vh;
+    /*height: 14vh 11vw;*/
+    margin: 3vh;
+    position: absolute;
+    right: 0; 
+    transition: transform 0.1s ease; 
 }
 
-.task-top-attributes img:hover {
+.close-img:hover {
     cursor: pointer;
+    transform: scale(1.5); 
 }
