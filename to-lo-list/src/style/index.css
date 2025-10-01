@@ -8,6 +8,8 @@
 
   margin: 0px;
   box-sizing: border-box;
+
+  cursor: url("/cursor-5.png") 4 4, auto;
 }
 
 
@@ -21,7 +23,7 @@ button {
 }
 
 button:hover {
-  cursor: pointer;
+  cursor: url("/cursor-5-hand.png") 4 4, auto;
   background-color: rgba(255,255,255,0.8);
   box-shadow: 13px 13px black;
 }

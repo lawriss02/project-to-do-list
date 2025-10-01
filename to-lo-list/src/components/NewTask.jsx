@@ -97,7 +97,7 @@ export function NewTask({ onSave, onDelete, taskData }) {
                             <textarea className="task-description" rows="9" placeholder="Description" onChange={(e) => setDescription(e.target.value)}></textarea> 
                         </div>
                         <div className="task-bar">
-                            <div className="task-bar-out" style={{backgroundColor: selectedPending.color}}>
+                            <div className={`task-bar-out bar-color-${selectedPending.color}`}>
                                 <div className="task-bar-in" style={{height: selectedPending.height}}>
                                 </div>
                             </div>

@@ -43,5 +43,5 @@
 }
 
 .button-start:hover {
-    cursor: pointer;
+    cursor: url("/cursor-5-hand.png") 4 4, auto;
 }

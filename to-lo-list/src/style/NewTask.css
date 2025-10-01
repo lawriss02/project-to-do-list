@@ -33,7 +33,7 @@ select {
 }
 
 select:hover {
-    cursor: pointer;
+    cursor: url("/cursor-5-hand.png") 4 4, auto;
 }
 
 .task-parameters-icons {
@@ -144,6 +144,18 @@ select:hover {
 }
 
 .close-img:hover {
-    cursor: pointer;
+    cursor: url("/cursor-5-hand.png") 4 4, auto;
     transform: scale(1.5); 
+}
+
+.task-bar-out.bar-color-green {
+    background-color: #adff87;
+}
+
+.task-bar-out.bar-color-yellow {
+    background-color: #ffdf87;
+}
+
+.task-bar-out.bar-color-red {
+    background-color: #ff8787;
 }

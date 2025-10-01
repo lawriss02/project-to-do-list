@@ -19,7 +19,7 @@ export function Task({task, onClick }) {
             </div>
             
             <div className="task-bar-t">
-                <div className="task-bar-out-t" style={{backgroundColor: task.selectedPending.color}}>
+                <div className={`task-bar-out-t bar-color-t-${task.selectedPending.color}`}>
                     <div className="task-bar-in-t" style={{height: task.selectedPending.height}}>
                     </div>
                 </div>
