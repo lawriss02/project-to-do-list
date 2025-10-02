@@ -39,25 +39,29 @@ export function NewTask({ onSave, onDelete, taskData }) {
 
 
     const handleAddOrUpdateTask = () => {
-        const taskObject = { id: taskData?.id || crypto.randomUUID(), title, description, selectedPriority, selectedCategory, selectedPending };
+ 
+        if (title != undefined && title != "") {
+            const taskObject = { id: taskData?.id || crypto.randomUUID(), title, description, selectedPriority, selectedCategory, selectedPending };
 
-        if (taskData) {
-            // Edit mode
-            context.updateTask(taskData.id, taskObject);
+            if (taskData) {
+                // Edit mode
+                context.updateTask(taskData.id, taskObject);
+            } else {
+                // Add mode
+                context.addTask(taskObject);
+
+                setTitle("");
+                setDescription("");
+                setSelectedPriority("");
+                setSelectedCategory("");
+                setSelectedPending("");
+            }
+
+            onSave();
         } else {
-            // Add mode
-            context.addTask(taskObject);
-
-            
-            setTitle("");
-            setDescription("");
-            setSelectedPriority("");
-            setSelectedCategory("");
-            setSelectedPending("");
-            
+            alert("Title cannot be empty!");
         }
 
-        onSave();
     };
 
     return (
@@ -108,7 +112,7 @@ export function NewTask({ onSave, onDelete, taskData }) {
                     
                     <div className="bottom-buttons">
                         <button className="task-delete" onClick={() => {onDelete(); }}>Delete</button>
-                        <button className="task-ok" onClick={() => {onSave(); handleAddOrUpdateTask();}}>Save</button>
+                        <button className="task-ok" onClick={() => {handleAddOrUpdateTask();}}>Save</button>
                     </div>
                 </div>
             </div>
