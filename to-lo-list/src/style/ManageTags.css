@@ -1,0 +1,89 @@
+.popup-manage-tags {
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    transform: translate(0%, -50%);
+    height: 95%;
+    width: 40vh;
+    border-top: .5rem black solid;
+    border-bottom: .5rem black solid;
+    border-left: .5rem black solid;
+    border-radius: 2rem 0 0 2rem;
+    
+}
+
+.popup-manage-tags h3 {
+    margin-top: 3rem;
+    margin-left: 3rem;
+    font-size: max(1.5rem, 1.5vw);
+}
+
+.tag-list {
+    margin-left: 3rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    height: 75%;
+}
+
+.tag-item {
+    display: flex;
+    margin: .5rem 0;
+    /*cursor: url("/cursor-5-hand.png") 4 4, auto;*/
+}
+
+.tag-item input, .tag-item label {
+    font-size: max(.9rem, 1vw);
+    border: .1rem solid black;
+    
+    border-radius: 10rem;
+    box-shadow: .2rem .2rem black;
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+    width: 50%;
+    transition: box-shadow 0.2s ease;
+}
+
+.tag-item input {
+    padding: 0.2rem 1rem;
+}
+
+.tag-item input:focus {
+    outline: none;
+}
+
+.tag-item label:hover {
+    /*cursor: url("/cursor-5-hand.png") 4 4, auto;*/
+    box-shadow: .5rem .5rem black;
+}
+
+
+.tag-span {
+    padding: 0.2rem 1rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  min-width: 0;
+  flex: 1;
+}
+
+
+
+
+.tag-item img {
+    transition: transform 0.1s ease; 
+}
+
+.tag-item img:hover {
+    cursor: url("/cursor-5-hand.png") 4 4, auto;
+    transform: scale(1.2); 
+}
+
+.popup-manage-tags button {
+    width: 15%;
+    display: block;   
+    margin: 0 auto;  
+    font-size: max(2rem, 2vw);
+}
