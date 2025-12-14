@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import "../style/NewTask.css"
 import data from "../configs/configuration_file.json";
 import { useUserContext } from "../context/context";
@@ -14,10 +14,11 @@ export function NewTask({ onSave, onDelete, taskData }) {
     };
 
     const [selectedPriority, setSelectedPriority] = useState(taskData?.selectedPriority || priorityImages.low);
-    const [selectedCategory, setSelectedCategory] = useState(taskData?.selectedCategory || "");
+    const [selectedCategory, setSelectedCategory] = useState(taskData?.selectedCategory || {id: "", name: ""});
     const [selectedPending, setSelectedPending] = useState(taskData?.selectedPending || { status: ""});
     const [title, setTitle] = useState(taskData?.title || "");
     const [description, setDescription] = useState(taskData?.description || "");
+    
     
     const pendingBarStyle = {
         completed: {status: "completed", color: "green", height: "0%"},
@@ -30,7 +31,10 @@ export function NewTask({ onSave, onDelete, taskData }) {
     };
 
     const handleCategoryChange = (e) => {
-        setSelectedCategory(e.target.value);
+        const selectedId = e.target.value;
+        const categoryObj = context.taskCategory.find(cat => cat.id === selectedId);
+        setSelectedCategory(categoryObj || { id: "", name: "" });
+        //setSelectedCategory(e.target.value);
     };
 
     const handlePendingChange = (e) => {
@@ -41,7 +45,7 @@ export function NewTask({ onSave, onDelete, taskData }) {
     const handleAddOrUpdateTask = () => {
  
         if (title != undefined && title != "") {
-            const taskObject = { id: taskData?.id || crypto.randomUUID(), title, description, selectedPriority, selectedCategory, selectedPending };
+            const taskObject = { id: taskData?.id || crypto.randomUUID(), title, description, selectedPriority, selectedCategoryId: selectedCategory.id, selectedPending };
 
             if (taskData) {
                 // Edit mode
@@ -64,6 +68,11 @@ export function NewTask({ onSave, onDelete, taskData }) {
 
     };
 
+    useEffect(() => {
+            console.log(selectedCategory.name);
+        }, [selectedCategory]);
+
+
     return (
         <div className="overlay">
                 <img className="close-img" src="../public/close2.png" alt="" onClick={() => onSave()}/>
@@ -76,11 +85,16 @@ export function NewTask({ onSave, onDelete, taskData }) {
                             <option value={priorityImages.mid}>{data.task_labels.Priority[1]}</option>
                             <option value={priorityImages.low}>{data.task_labels.Priority[2]}</option>
                         </select>
-                        <select id="category-selector" required onChange={handleCategoryChange} value={selectedCategory}>
+                        <select 
+                            id="category-selector" 
+                            required 
+                            onChange={handleCategoryChange} 
+                            value={selectedCategory.id}
+                        >
                             <option value="" disabled>{Object.keys(data.task_labels)[1]}</option>
-                            {context.taskCategory.map((category, index) => (
-                                <option key={index} value={category}>
-                                {category}
+                            {context.taskCategory.map((category) => (
+                                <option key={category.id} value={category.id}>
+                                {category.name}
                                 </option>
                             ))}
                         </select>
@@ -93,7 +107,7 @@ export function NewTask({ onSave, onDelete, taskData }) {
                     </div>
                     <div className="task-parameters-icons">
                         <img src={selectedPriority} alt="" />
-                        {selectedCategory && (<label htmlFor="">{selectedCategory}</label>) }
+                        {selectedCategory?.name && (<label htmlFor="">{selectedCategory.name}</label>) }
                     </div>
                     <div className="task-content-bar">
                         <div className="task-content">

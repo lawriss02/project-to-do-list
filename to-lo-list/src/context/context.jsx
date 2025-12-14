@@ -16,7 +16,22 @@ export const UserContext = ({ children }) => {
         return saved_username ? JSON.parse(saved_username) : [];
     });
 
-    const [taskCategory, setTaskCategory] = useState(data.task_labels.Category);
+    const [taskCategory, setTaskCategory] = useState(() => {
+        const saved_categories = localStorage.getItem("categories");
+
+        if (saved_categories) {
+            // si ya hay datos guardados, los devolvemos directamente
+            return JSON.parse(saved_categories);
+        } else {
+            // si no hay nada guardado, convertimos las categorías originales en objetos
+            const categories = data.task_labels.Category.map((name) => ({
+            id: crypto.randomUUID(),
+            name,
+            }));
+            return categories;
+        }
+    });
+    
     const [tasks, setTasks] = useState(() => {
         const saved_tasks = localStorage.getItem("tasks");
         return saved_tasks ? JSON.parse(saved_tasks) : [];
@@ -34,6 +49,9 @@ export const UserContext = ({ children }) => {
         localStorage.setItem("username", JSON.stringify(username));
     }, [username]);
 
+     useEffect(() => {
+        localStorage.setItem("categories", JSON.stringify(taskCategory));
+    }, [taskCategory]);
 
 
     // --------------------- CRUD TASK ACTIONS ---------------------
@@ -57,16 +75,39 @@ export const UserContext = ({ children }) => {
     };
     
 
+    // --------------------- CRUD CATEGORY ACTIONS ---------------------
+
+     const addCategory = (category) => {
+        setTaskCategory((prev) => [...prev, category]);
+    };
+
+    const deleteCategory = (id) => {
+        setTaskCategory((prevCategories) => {
+            const updatedCategories = prevCategories.filter(category => category.id !== id);
+            localStorage.setItem("categories", JSON.stringify(updatedCategories)); // para que persista
+            return updatedCategories;
+        });
+    };
+
+    const updateCategory = (id, updatedCategory) => {
+        setTaskCategory(prev =>
+            prev.map(category => category.id === id ? { ...category, ...updatedCategory } : category)
+        );
+    };
+
     const context = {
         username,
         setUsername,
-        taskCategory,
-        setTaskCategory,
         addTask,
         deleteTask,
         tasks,
         setTasks,
-        updateTask
+        updateTask,
+        taskCategory,
+        setTaskCategory,
+        addCategory,
+        deleteCategory,
+        updateCategory
     };
 
     return (

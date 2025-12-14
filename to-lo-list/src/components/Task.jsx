@@ -1,19 +1,22 @@
 import { useEffect } from "react"
 import "../style/Task.css"
+import { useUserContext } from "../context/context";
 
 export function Task({task, onClick }) {
 
     //{taskInfo.title}
-    /*useEffect(() => {
+    useEffect(() => {
         console.log('USER TASK: ', task);
-    }, []); */
+    }, []); 
+    const context = useUserContext();
+    const category = context.taskCategory.find(c => c.id === task.selectedCategoryId);
 
     return (
         <div className={`task color-${task.selectedPending.color}`} onClick={onClick}>
             <div className="task-content-left">
                 <div className="task-parameters-icons-t">
                     <img className="task-icon-priority" src={task.selectedPriority} alt=""/>
-                    {task.selectedCategory && (<label htmlFor="">{task.selectedCategory}</label>) }
+                    {category && (<label htmlFor="">{category.name}</label>) }
                 </div>
                 <p>{task.title}</p>
             </div>
