@@ -34,7 +34,6 @@ export function NewTask({ onSave, onDelete, taskData }) {
         const selectedId = e.target.value;
         const categoryObj = context.taskCategory.find(cat => cat.id === selectedId);
         setSelectedCategory(categoryObj || { id: "", name: "" });
-        //setSelectedCategory(e.target.value);
     };
 
     const handlePendingChange = (e) => {

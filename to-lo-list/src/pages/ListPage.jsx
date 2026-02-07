@@ -29,7 +29,6 @@ export function ListPage() {
     };
 
     useEffect(() => { 
-        //console.log('TASKS: ', context.tasks);
         setTotalTasks(context.tasks.length);
         let count = 0;
         for (let i=0; i<context.tasks.length; i++) {
@@ -38,7 +37,6 @@ export function ListPage() {
             }
         }
         setCompletedTasks(count);
-
     }, [context.tasks]);
 
     return(
@@ -65,6 +63,3 @@ export function ListPage() {
         </div>
     )
 }
-
-/* <p className="task-title" contenteditable="true">Task title</p> */
-/*{showDeletePopup && <DeleteTask onDelete={() => setShowDeletePopup(true)} />}*/

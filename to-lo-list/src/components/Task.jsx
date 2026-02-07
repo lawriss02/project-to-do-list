@@ -4,10 +4,6 @@ import { useUserContext } from "../context/context";
 
 export function Task({task, onClick }) {
 
-    //{taskInfo.title}
-    useEffect(() => {
-        console.log('USER TASK: ', task);
-    }, []); 
     const context = useUserContext();
     const category = context.taskCategory.find(c => c.id === task.selectedCategoryId);
 

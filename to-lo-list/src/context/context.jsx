@@ -20,10 +20,8 @@ export const UserContext = ({ children }) => {
         const saved_categories = localStorage.getItem("categories");
 
         if (saved_categories) {
-            // si ya hay datos guardados, los devolvemos directamente
             return JSON.parse(saved_categories);
         } else {
-            // si no hay nada guardado, convertimos las categorías originales en objetos
             const categories = data.task_labels.Category.map((name) => ({
             id: crypto.randomUUID(),
             name,
@@ -63,7 +61,7 @@ export const UserContext = ({ children }) => {
     const deleteTask = (id) => {
         setTasks((prevTasks) => {
             const updatedTasks = prevTasks.filter(task => task.id !== id);
-            localStorage.setItem("tasks", JSON.stringify(updatedTasks)); // para que persista
+            localStorage.setItem("tasks", JSON.stringify(updatedTasks)); 
             return updatedTasks;
         });
     };
@@ -84,7 +82,7 @@ export const UserContext = ({ children }) => {
     const deleteCategory = (id) => {
         setTaskCategory((prevCategories) => {
             const updatedCategories = prevCategories.filter(category => category.id !== id);
-            localStorage.setItem("categories", JSON.stringify(updatedCategories)); // para que persista
+            localStorage.setItem("categories", JSON.stringify(updatedCategories));
             return updatedCategories;
         });
     };
