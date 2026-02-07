@@ -1,27 +1,16 @@
 .task {
     padding: 1rem;
-    /*background-color: rgba(216, 255, 239, 0.63) !important; */
     background-color: #ffffffbb;
     width: 60rem;
     max-width: 60rem;
-    /*margin-bottom: 2vh;*/
     height: 10rem;
     border-radius: 10px;
     box-shadow: 5px 5px black;
     transition: box-shadow 0.2s ease;
-
     display: flex;
-    /*align-items: center;*/
     justify-content: space-between;
-
     transition: transform 0.1s ease; 
-
 }
-
-/*
-.task:hover {
-    background-color: rgb(216, 255, 239) !important;
-}*/
 
 .task.color-red {
     background-color: #f2909098;
@@ -87,7 +76,6 @@
 }
 
 .task-parameters-icons-t {
-    /*margin: .5rem 0;*/
     display: flex;
     align-items: center;
     margin-bottom: 1vh;
@@ -114,16 +102,12 @@
     white-space: normal;
     word-break: break-word;
     overflow-wrap: break-word;
-
-    overflow: hidden;         /* oculta lo que se sale */
+    overflow: hidden;         
     text-overflow: ellipsis;  
-
-   display: -webkit-box;        /* activa el modo caja flexible */
-  -webkit-line-clamp: 3;       /* máximo 2 líneas */
+   display: -webkit-box;        
+  -webkit-line-clamp: 3;       
   -webkit-box-orient: vertical;
 }
-
-
 
 .task-bar-out-t.bar-color-t-green {
     background-color: #89ca6b;

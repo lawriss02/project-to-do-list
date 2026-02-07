@@ -17,7 +17,6 @@
     align-items: center;
     height: 80%;
     width: 95%;
-    /*cursor: url("/cursor1-32.png") 4 4, auto;*/
 }
 
 .main-content-list {
@@ -30,7 +29,6 @@
 }
 
 .title-to-do {
-    /*background-color: white;*/
     margin: 1vh 0 0 0;
     text-align: center;
     font-size: max(1.4rem, 3.5vw);
@@ -39,7 +37,6 @@
 .top-bar {
     width: 100%;
     display: flex;
-    /*justify-content: space-between;*/
     align-items: center;
 }
 
@@ -60,7 +57,7 @@
     flex-wrap: wrap;
     gap: 1.3rem;
     height: 100%;
-    overflow-y: auto; /*scroll?*/
+    overflow-y: auto; 
     padding: 30px;
 }
 
@@ -77,36 +74,30 @@
 
 
 .overlay {
-    position: fixed;           /* lo saca del flujo normal y lo fija en pantalla */
+    position: fixed;          
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5); /* fondo negro semitransparente */
-    z-index: 9999;             /* asegúrate de que esté encima de todo */
-    pointer-events: auto;      /* puede capturar clics si quieres bloquear interacción */
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 9999;             
+    pointer-events: auto;     
 }
 
-
-/* ancho del scrollbar */
 .task-list-container::-webkit-scrollbar {
-  width: 1rem;   /* ajusta el ancho de la barra vertical */
+  width: 1rem;  
 }
 
-/* fondo de la pista */
 .task-list-container::-webkit-scrollbar-track {
   background: #fd050500;
 }
 
-/* el "thumb" que arrastras */
 .task-list-container::-webkit-scrollbar-thumb {
   background-color: #ffffffb0;
   border-radius: 2rem;
-  border: 2px solid #a5a5a5; /* da efecto de separación */
-  /*box-shadow: .3rem .3rem black;*/
+  border: 2px solid #a5a5a5; 
 }
 
-/* hover sobre el thumb */
 .task-list-container::-webkit-scrollbar-thumb:hover {
   background: #ffffff;
   cursor: url("/cursor-5-hand.png") 4 4, auto;

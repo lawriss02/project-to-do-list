@@ -8,9 +8,9 @@ export function NewTask({ onSave, onDelete, taskData }) {
     const context = useUserContext();
 
     const priorityImages = {
-        low: "../public/priority-low1.png",
-        mid: "/public/priority-mid1.png",
-        high: "/public/priority-high1.png"
+        low: `${import.meta.env.BASE_URL}priority-low1.png`,
+        mid: `${import.meta.env.BASE_URL}priority-mid1.png`,
+        high: `${import.meta.env.BASE_URL}priority-high1.png`
     };
 
     const [selectedPriority, setSelectedPriority] = useState(taskData?.selectedPriority || priorityImages.low);
@@ -74,7 +74,7 @@ export function NewTask({ onSave, onDelete, taskData }) {
 
     return (
         <div className="overlay">
-                <img className="close-img" src="../public/close2.png" alt="" onClick={() => onSave()}/>
+                <img className="close-img" src={`${import.meta.env.BASE_URL}close2.png`} alt="" onClick={() => onSave()}/>
 
                 <div className="popup-new-task">
                     <div className="task-top-attributes">

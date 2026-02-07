@@ -5,10 +5,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
-  /*padding: 2rem;*/
   border-radius: 8px;
   width: 75%;
-  /*height: 50%;*/
   border: solid black 0.3rem;
   box-shadow: .5rem .5rem black;
   border-radius: 2rem;
@@ -23,7 +21,6 @@
     flex-wrap: wrap;
     gap: 1rem;
     align-items: center;
-    /*margin: .5rem;*/
 }
 
 select {
@@ -95,12 +92,10 @@ select:hover {
     padding: 0 1.5rem;
     background-color: rgba(58, 62, 109, 0.171);
     margin-bottom: 1rem;
-    /*transition: transform 0.1s ease;*/
 }
 
 .task-delete:hover, .task-ok:hover {
     background-color: rgba(137, 141, 182, 0.74);
-    /*transform: scale(1.1); */
 } 
 
 .task-content {
@@ -117,7 +112,6 @@ select:hover {
 .task-bar-out {
     border: 4px solid black; 
     width: 2.5vh;
-    /*background-color: red;*/
     border-radius: 1rem;
     height: 90%;
     margin-right: 2.5vh;
@@ -125,9 +119,7 @@ select:hover {
 
 .task-bar-in {
     background-color: white;
-    /*height: 80%;*/
     border-radius: 1rem 1rem 0 0;
-
 }
 
 .task-bar {
@@ -137,7 +129,6 @@ select:hover {
 
 .close-img {
     height: 3.5vh;
-    /*height: 14vh 11vw;*/
     margin: 3vh;
     position: absolute;
     right: 0; 

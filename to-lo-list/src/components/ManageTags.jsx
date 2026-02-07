@@ -33,7 +33,7 @@ export function ManageTags({onClose}) {
     return (
         <div class="overlay">
             <div class="popup-manage-tags">
-                <img className="close-img" src="../public/close-black.png" alt="" onClick={() => {
+                <img className="close-img" src={`${import.meta.env.BASE_URL}close-black.png`} alt="" onClick={() => {
                     if (checkNotEmptyTags()) {
                         onClose();
                     } else {
@@ -59,7 +59,7 @@ export function ManageTags({onClose}) {
                                 <span className="tag-span">{tag.name}</span>
                                 </label>
                             )}
-                            <img src="../../public/delete-icon.png" alt="" onClick={() => {setEditingIndex(index); setShowCategoryDeletePopup(true); setEditingCategory(tag)}}/>
+                            <img src={`${import.meta.env.BASE_URL}delete-icon.png`} alt="" onClick={() => {setEditingIndex(index); setShowCategoryDeletePopup(true); setEditingCategory(tag)}}/>
                         </div>
                     ))}
                 </div>
